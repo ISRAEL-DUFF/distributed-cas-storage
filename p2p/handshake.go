@@ -1,7 +1,13 @@
 package p2p
 
-type HandShakeFunc func(any) error
+import "errors"
 
-func NOPHandshakeFunc(any) error {
+// ErrorInvalidHandshake is returned if the handshake between
+// the local and remote node could not be esterblished
+var ErrorInvalidHandshake = errors.New("invalid handshake")
+
+type HandShakeFunc func(Peer) error
+
+func NOPHandshakeFunc(Peer) error {
 	return nil
 }
